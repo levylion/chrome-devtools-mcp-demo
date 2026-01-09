@@ -1,0 +1,58 @@
+{
+    "batches": [
+        {
+            "id": 1,
+            "name": "Amber Ale 2024",
+            "style": "American Amber Ale",
+            "startDate": "2024-01-05",
+            "status": "Fermenting",
+            "targetOG": 1.056,
+            "currentGravity": 1.020,
+            "temp": 19.5,
+            "pressure": 5.2
+        },
+        {
+            "id": 2,
+            "name": "Galaxy IPA",
+            "style": "NEIPA",
+            "startDate": "2024-01-08",
+            "status": "Active",
+            "targetOG": 1.065,
+            "currentGravity": 1.060,
+            "temp": 20.1,
+            "pressure": 3.8
+        },
+        {
+            "id": 3,
+            "name": "Midnight Stout",
+            "style": "Imperial Stout",
+            "startDate": "2023-12-15",
+            "status": "Conditioning",
+            "targetOG": 1.090,
+            "currentGravity": 1.022,
+            "temp": 12.0,
+            "pressure": 8.5
+        }
+    ],
+    "users": [
+        {
+            "id": 1,
+            "username": "brewmaster",
+            "role": "admin"
+        }
+    ],
+    "recipes": [
+        {
+            "id": 1,
+            "name": "Classic Pilsner",
+            "difficulty": "Advanced",
+            "time": "6 weeks"
+        },
+        {
+            "id": 2,
+            "name": "Hazy Jane Clone",
+            "difficulty": "Intermediate",
+            "time": "3 weeks"
+        }
+    ]
+}
