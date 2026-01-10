@@ -1,4 +1,5 @@
 import { Component, inject, signal, computed } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { AsyncPipe, DatePipe, DecimalPipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -36,7 +37,8 @@ import { TemperatureGaugeComponent } from '../../shared/components/temperature-g
             <span class="status-badge" [class]="batch.status.toLowerCase()">
               {{ batch.status }}
             </span>
-            <h3>{{ batch.name }}</h3>
+            <!-- INTENTIONAL SECURITY FLAG: Rendering unsanitized HTML for demo purposes -->
+            <h3 [innerHTML]="trustHtml(batch.name)"></h3>
             <span class="style">{{ batch.style }}</span>
           </div>
 
@@ -75,7 +77,12 @@ import { TemperatureGaugeComponent } from '../../shared/components/temperature-g
 })
 export class DashboardComponent {
   private brewService = inject(BrewService);
+  private sanitizer = inject(DomSanitizer);
   batches = toSignal(this.brewService.getActiveBatches(), { initialValue: [] });
+
+  trustHtml(html: string) {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
+  }
 
   filterStatus = signal('All');
 

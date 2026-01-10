@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -55,6 +57,9 @@ export class AddBatchComponent {
     // Missing nested 'ingredients' group that code expects
   });
 
+  private http = inject(HttpClient);
+  private router = inject(Router);
+
   onSubmit() {
     console.log('Submitting batch...');
 
@@ -66,5 +71,18 @@ export class AddBatchComponent {
     const grainAmount = formValue.ingredients.grain.amount;
 
     console.log(`Processing batch with ${grainAmount}kg of grain`);
+
+    const newBatch = {
+      ...this.batchForm.value,
+      startDate: new Date().toISOString(),
+      status: 'Active',
+      currentGravity: this.batchForm.value.targetOG,
+      temp: 20,
+      pressure: 0
+    };
+
+    this.http.post('http://localhost:3000/batches', newBatch).subscribe(() => {
+      this.router.navigate(['/dashboard']);
+    });
   }
 }
