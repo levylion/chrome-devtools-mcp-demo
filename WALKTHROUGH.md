@@ -67,6 +67,16 @@
     2.  AI adds the route.
     3.  **Verification:** AI navigates to the new page, hovers over items, and clicks buttons to prove it works.
 
+### 5️⃣ Network Debugging (Broken Recipes)
+**Narrative:** "The Recipes page isn't loading anything. It seems broken."
+
+*   **Action:** Ask AI: *"Why is the Recipes page failing to load data?"*
+*   **What happens:**
+    1.  AI navigates to `/recipe-wishlist`.
+    2.  AI inspects **Network Requests**.
+    3.  **FOUND:** Failed requests to `http://api.wrong-domain.local:9999/recipes`.
+*   **The Fix:** AI identifies the incorrect API domain in `recipe.service.ts` and corrects it to `http://localhost:3000`.
+
 ---
 
 ## 📝 Speaker Notes
