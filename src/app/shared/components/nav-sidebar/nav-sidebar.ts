@@ -47,6 +47,11 @@ import { AuthService } from '../../../core/services/auth';
             <span class="icon">🌾</span> Ingredients
           </a>
         </li>
+        <li>
+          <a routerLink="/secret-batch" routerLinkActive="active">
+            <span class="icon">🎁</span> Secret Batch
+          </a>
+        </li>
       </ul>
 
       <div class="footer">

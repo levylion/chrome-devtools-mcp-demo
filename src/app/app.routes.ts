@@ -18,5 +18,9 @@ export const routes: Routes = [
         path: 'recipe-wishlist',
         loadComponent: () => import('./features/recipe-wishlist/recipe-wishlist').then(m => m.RecipeWishlistComponent)
     },
+    {
+        path: 'secret-batch',
+        loadComponent: () => import('./features/secret-batch/secret-batch').then(m => m.SecretBatchComponent)
+    },
     { path: '**', redirectTo: 'dashboard' }
 ];
