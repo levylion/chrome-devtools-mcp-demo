@@ -44,6 +44,7 @@ interface LogEntry {
         }
       </div>
     </div>
+    <button type="submit" class="btn btn-primary" (click)="saveLogs()">Save Logs</button>
   `,
   styles: [`
     .log-page {
@@ -111,9 +112,9 @@ export class BrewLogComponent implements OnDestroy {
 
     // INTENTIONAL BUG: Aggressive polling causing frequent re-renders
     // Combined with large DOM size, this causes "DOM Thrashing" and high CPU usage
-    this.intervalId = setInterval(() => {
-      this.addLog();
-    }, 100);
+    // this.intervalId = setInterval(() => {
+    //   this.addLog();
+    // }, 100);
   }
 
   ngOnDestroy() {
@@ -123,10 +124,24 @@ export class BrewLogComponent implements OnDestroy {
   generateInitialLogs() {
     // Generate 10,000 initial items
     const initialData: LogEntry[] = [];
-    for (let i = 0; i < 10000; i++) {
+    for (let i = 0; i < 200; i++) {
       initialData.push(this.createRandomLog(i));
     }
     this.logs.set(initialData);
+  }
+
+  saveLogs() {
+    const start = Date.now();
+    while (Date.now() - start < 400) console.log('Blocking main thread'); // Blocks main thread
+    //alert('Done!');
+    // const logs = this.logs();
+    // const blob = new Blob([JSON.stringify(logs)], { type: 'application/json' });
+    // const url = URL.createObjectURL(blob);
+    // const a = document.createElement('a');
+    // a.href = url;
+    // a.download = 'logs.json';
+    // a.click();
+    // URL.revokeObjectURL(url);
   }
 
   addLog() {

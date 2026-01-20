@@ -68,9 +68,9 @@ export class AddBatchComponent {
     const formValue = this.batchForm.value as any;
 
     // This will throw: Cannot read properties of undefined (reading 'grain')
-    const grainAmount = formValue.ingredients.grain.amount;
+    //const grainAmount = formValue.ingredients.grain.amount;
 
-    console.log(`Processing batch with ${grainAmount}kg of grain`);
+    //console.log(`Processing batch with ${grainAmount}kg of grain`);
 
     const newBatch = {
       ...this.batchForm.value,
